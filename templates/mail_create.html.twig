@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Mail - {{ person.name }}{% endblock %}
+
+{% block body %}
+    <p style="font-size: 20px">Envoyer un mail à <strong>{{ person.name }}</strong>, {{ person.status }} de l'entreprise {{ company.name }}</p>
+
+
+    {{ form_start(form) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.recipient) }}
+        {{ form_row(form.body) }}
+
+        <button type="submit" class="btn">Envoyer</button>
+    {{ form_end(form) }}
+
+{% endblock %}

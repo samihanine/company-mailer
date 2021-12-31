@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Ci dessous la liste des sociétés</h1>
+
+    <div class="wrapper">
+        {% for company in companies %}
+            <a class="card" href={{ "/companies/#{company.id}" }}>
+                <img width="50" height="50" src={{ company.img }} alt="entreprise"/>
+                <p>{{ company.name }}</p>
+            </a>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

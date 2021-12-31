@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Entreprise - {{ company.name }}{% endblock %}
+
+{% block body %}
+    <h1>Entreprise {{ company.name }}</h1>
+
+    <img width="50" height="50" src={{ company.img }} alt="entreprise"/>
+    <table>
+        <thead>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.description }}</td>
+                <td>{{ company.tel }}</td>
+                <td>{{ company.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Personnes en poste chez {{ company.name }} :</h2>
+    <div class="wrapper">
+        {% for person in persons %}
+            <div class="card">
+                <img width="50px" height="50px" src="https://img.icons8.com/officel/1600/ffffff/person-male.png"/>
+                <p>Nom : {{ person.name }}</p>
+                <p>Poste : {{ person.status }}</p>
+                <p>Mail : {{ person.mail }}</p>
+                <a class="btn" href={{ "/mail/#{person.id}" }}>Envoyer un mail</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
