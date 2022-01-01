@@ -41,10 +41,6 @@ class Mails extends AbstractController
             $email = (new Email())
                 ->from('ptut.iut69@gmail.com')
                 ->to($person->getMail())
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
                 ->subject($mail->getSubject())
                 ->html('<p>'.$mail->getBody().'</p>');
 

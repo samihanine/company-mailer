@@ -32,13 +32,9 @@ http://127.0.0.1:8000
 
 * Authentification
 
-```
-composer require symfony/security-bundle
-```
+```composer require symfony/security-bundle```
 
-```
-composer require symfonycasts/verify-email-bundle
-```
+```composer require symfonycasts/verify-email-bundle```
 ## BDD
 
 * Dans le fichier .env :
@@ -70,7 +66,7 @@ twig:
 
 ## Envoyer un mail avec gmail
 * désactiver la double authentification
-* autorisé les "less secure apps"
+* autoriser les "less secure apps"
   https://support.google.com/accounts/answer/6010255?hl=en#zippy=%2Cif-less-secure-app-access-is-on-for-your-account
 
 ## Auth / register

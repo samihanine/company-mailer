@@ -16,7 +16,7 @@ class Companies extends AbstractController
 {
 
     /**
-     * @Route("/companies")
+     * @Route("/company", name="company")
      */
     public function main(ManagerRegistry $doctrine): Response
     {
@@ -28,7 +28,7 @@ class Companies extends AbstractController
     }
 
     /**
-     * @Route("/companies/{id}", name="company_show")
+     * @Route("/company/info/{id}", name="company_show")
      */
     public function company(ManagerRegistry $doctrine, int $id): Response
     {

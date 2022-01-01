@@ -7,7 +7,7 @@
 
     <div class="wrapper">
         {% for company in companies %}
-            <a class="card" href={{ "/companies/#{company.id}" }}>
+            <a class="card" href={{ "/company/info/#{company.id}" }}>
                 <img width="50" height="50" src={{ company.img }} alt="entreprise"/>
                 <p>{{ company.name }}</p>
             </a>
