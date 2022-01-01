@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mail - historique{% endblock %}
+
+{% block body %}
+    <h1>Historique des mails que j'ai envoyés</h1>
+
+    <table>
+        <thead>
+            <th>Date de l'envoie</th>
+            <th>Sujet</th>
+            <th>Destinataire</th>
+            <th>Contenu</th>
+        </thead>
+        <tbody>
+        {% for mail in mails %}
+            <tr>
+                <td>{{ mail.date | date('d-m-Y')}}</td>
+                <td>{{ mail.subject }}</td>
+                <td>{{ mail.recipient }}</td>
+                <td>{{ mail.body  }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

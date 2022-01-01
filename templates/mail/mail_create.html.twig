@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Mail - {{ person.name }}{% endblock %}
 
@@ -7,11 +7,11 @@
 
 
     {{ form_start(form) }}
-        {{ form_row(form.subject) }}
-        {{ form_row(form.recipient) }}
-        {{ form_row(form.body) }}
+    {{ form_row(form.subject) }}
+    {{ form_row(form.recipient) }}
+    {{ form_row(form.body) }}
 
-        <button type="submit" class="btn">Envoyer</button>
+    <button type="submit" class="btn">Envoyer</button>
     {{ form_end(form) }}
 
 {% endblock %}

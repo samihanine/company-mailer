@@ -24,6 +24,29 @@
                     <li>
                         <a href="/companies">Entreprises</a>
                     </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li>
+                            <a href="/mail/history">Historique de mes mails</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <nav>
+                <ul>
+                    {% if is_granted('ROLE_USER') %}
+                        <li>
+                            <a href="/logout">Se déconnecter</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') == false %}
+                        <li>
+                            <a href="/login">Se connecter</a>
+                        </li>
+                        <li>
+                            <a href="/register">S'inscrire</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Company;
 use App\Entity\Person;
@@ -15,18 +16,20 @@ use App\Form\MailType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 class Mails extends AbstractController
 {
 
     /**
-     * @Route("/mail/{id}", name="mail_create")
+     * @Route("/mail/to/{id}", name="mail_create")
+     * @IsGranted("ROLE_USER")
      */
     public function create(Request $request, ManagerRegistry $doctrine, int $id, MailerInterface $mailer): Response
     {
         $person = $doctrine->getRepository(Person::class)->find($id);
         $company = $doctrine->getRepository(Company::class)->find($person->getCompany());
 
-        $today = date("m.d.y");
         $mail = new Mail();
         $mail->setRecipient($person->getMail());
 
@@ -48,20 +51,33 @@ class Mails extends AbstractController
             $mailer->send($email);
 
             // we save the email in the database
+            $user = $this->getUser();
             $mail->setDate(new \DateTime());
+            $mail->setUser($user);
             $em = $doctrine->getManager();
             $em->persist($mail);
             $em->flush();
 
-            return $this->render('mail_success.html.twig', ['username' => 'end']);
-
-
+            return $this->render('mail/mail_success.html.twig', []);
         }
 
-        return $this->render('mail_create.html.twig', [
+        return $this->render('mail/mail_create.html.twig', [
             'person' => $person,
             'company' => $company,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/mail/history")
+     * @IsGranted("ROLE_USER")
+     */
+    public function history(ManagerRegistry $doctrine): Response
+    {
+        $mails = $doctrine->getRepository(Mail::class)->findAll();
+
+        return $this->render('mail/mail_history.html.twig', [
+            'mails' => $mails
         ]);
     }
 }

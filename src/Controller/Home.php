@@ -9,14 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class Home extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function main(): Response
     {
-        $user_name= "sami";
+        $user = $this->getUser();
+        $firstname = $user ? $user->getFirstname() : "";
 
-        return $this->render('home.html.twig', [
-            'user_name' => $user_name,
+        return $this->render('home/home.html.twig', [
+            'firstname' => $firstname,
         ]);
     }
 }

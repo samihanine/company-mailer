@@ -30,6 +30,15 @@ http://127.0.0.1:8000
 
 ```composer require symfony/google-mailer```
 
+* Authentification
+
+```
+composer require symfony/security-bundle
+```
+
+```
+composer require symfonycasts/verify-email-bundle
+```
 ## BDD
 
 * Dans le fichier .env :
@@ -63,3 +72,28 @@ twig:
 * désactiver la double authentification
 * autorisé les "less secure apps"
   https://support.google.com/accounts/answer/6010255?hl=en#zippy=%2Cif-less-secure-app-access-is-on-for-your-account
+
+## Auth / register
+
+```
+composer require symfonycasts/verify-email-bundle
+
+php bin/console make:user
+
+php bin/console make:auth
+
+php bin/console make:registration
+```
+
+* limiter l'accès aux routes (avec annotation)
+
+```php
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+/* ... */
+
+/**
+* @Route("/mail/{id}", name="mail_create")
+* @IsGranted("ROLE_USER")
+*/
+```

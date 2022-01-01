@@ -38,7 +38,7 @@ class Mail
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="mails")
+     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="mails")
      */
     private $user;
 

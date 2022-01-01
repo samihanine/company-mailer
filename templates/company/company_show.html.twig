@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Entreprise - {{ company.name }}{% endblock %}
 
@@ -31,7 +31,7 @@
                 <p>Nom : {{ person.name }}</p>
                 <p>Poste : {{ person.status }}</p>
                 <p>Mail : {{ person.mail }}</p>
-                <a class="btn" href={{ "/mail/#{person.id}" }}>Envoyer un mail</a>
+                <a class="btn" href={{ "/mail/to/#{person.id}" }}>Envoyer un mail</a>
             </div>
         {% endfor %}
     </div>

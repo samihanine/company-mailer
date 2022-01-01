@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_USER') %}
+        <h1>Bonjour {{ firstname }} !</h1>
+    {% else %}
+        <h1>Bonjour à toi !</h1>
+    {% endif %}
+
+    <p>L'objectif de ce projet est d'envoyer des mails (rédigé depuis l'application) à des entreprises.</p>
+
+    <h2>Fonctionnalités</h2>
+    <ul>
+        <li>Page qui affiche la liste des entreprises</li>
+        <li>Page qui affiche les informations d'une entreprise et la liste de ses employés</li>
+        <li>Page pour rédiger et envoyer un mail à un employé </li>
+        <li>Page avec l'historique des mails envoyés par l'utilisateur</li>
+        <li>Système de connexion / inscription</li>
+    </ul>
+    <h2>TODO</h2>
+    <ul>
+        <li>Ajouter / modifier / supprimer des entreprises depuis l'application</li>
+        <li>Ajouter / modifier / supprimer des employés depuis l'application</li>
+        <li>Ajouter / modifier / supprimer des secteurs depuis l'application</li>
+    </ul>
+{% endblock %}
