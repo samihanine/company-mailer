@@ -1,4 +1,21 @@
-## Démarrer le serveur
+# Company Mailer
+
+Objectif : rédiger et envoyer des mails à des entreprises (fictives) répertoriés sur l'application
+
+## Démarrer le projet
+
+* cloner le repo
+```
+git clone https://github.com/samihanine/company-mailer
+```
+
+* importer la bdd depuis le fichier : ```companymail.sql```
+* modifier le .env
+```
+DATABASE_URL="mysql://root:root@127.0.0.1:8889/companymail"
+MAILER_DSN=gmail://ptut.iut69@gmail.com:totoro2021@default
+```
+* démarrer le serveur :
 
 ```php -S 127.0.0.1:8000 -t public```
 ou 
